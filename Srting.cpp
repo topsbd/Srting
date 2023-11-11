@@ -17,7 +17,7 @@ public:
         _capacity = str._capacity;
         _count = str._count;
 
-        _str = new char[_capacity + 1];
+        _str = new char[_capacity];
         strcpy_s(_str, _capacity, str._str);
     }
 
@@ -110,7 +110,7 @@ int main() {
     String* str = new String("Hello world!");
     String* str2 = new String(*str);
 
-    delete str;
+    //delete str;
     delete str2;
     return 0;
 }
