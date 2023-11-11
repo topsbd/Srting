@@ -110,7 +110,7 @@ int main() {
     String* str = new String("Hello world!");
     String* str2 = new String(*str);
 
-    //delete str;
+    delete str;
     delete str2;
     return 0;
 }
