@@ -90,6 +90,13 @@ public:
         return *this;
     }
 
+    char& operator[] (int index) {
+        if (!check_range(index))
+            exit(1);
+
+        return _str[index];
+    }
+
     friend ostream& operator<< (ostream& out, String& s) {
         out << s._str;
         return out;
@@ -123,7 +130,10 @@ int main() {
     String str3 = move(str2);
 
     cout << "str3: " << str3 << endl;
-    cout << "str2: " << str2 << endl;
+
+    str3[3] = 'H';
+    cout << "str3 at index 3: " << str3[3] << endl;
+    cout << "str3: " << str3 << endl;
 
     delete str;
     return 0;
