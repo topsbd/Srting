@@ -118,8 +118,13 @@ private:
 
 int main() {
     String* str = new String(String("Hello world!"));
+    
+    String str2("My string");
+    String str3 = move(str2);
 
-    cout << *str;
+    cout << "str3: " << str3 << endl;
+    cout << "str2: " << str2 << endl;
+
     delete str;
     return 0;
 }
