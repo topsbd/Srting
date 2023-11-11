@@ -4,7 +4,7 @@ using namespace std;
 
 class String {
 private:
-    char* _str;
+    char* _str = nullptr;
     int _count;
     int _capacity;
 
@@ -13,12 +13,22 @@ public:
         set_str(str);
     }
 
-    String(const String& str) {
-        _capacity = str._capacity;
-        _count = str._count;
+    String(const String& other) {
+        _capacity = other._capacity;
+        _count = other._count;
 
         _str = new char[_capacity];
-        strcpy_s(_str, _capacity, str._str);
+        strcpy_s(_str, _capacity, other._str);
+    }
+
+    String(String&& other) noexcept {
+        _capacity = other._capacity;
+        _count = other._count;
+        _str = other._str;
+
+        other._str = nullptr;
+        other._capacity = 0;
+        other._count = 0;
     }
 
     ~String() {
@@ -107,10 +117,9 @@ private:
 };
 
 int main() {
-    String* str = new String("Hello world!");
-    String* str2 = new String(*str);
+    String* str = new String(String("Hello world!"));
 
+    cout << *str;
     delete str;
-    delete str2;
     return 0;
 }
