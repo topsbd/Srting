@@ -135,6 +135,8 @@ int main() {
     cout << "str3 at index 3: " << str3[3] << endl;
     cout << "str3: " << str3 << endl;
 
+    cout << "symbol: " << (*str)[0] << endl;
+
     delete str;
     return 0;
 }
